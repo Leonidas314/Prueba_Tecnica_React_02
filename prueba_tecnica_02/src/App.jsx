@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import './App.css'
-import response from './tempResponse/response.json'
 import badResponse from './tempResponse/no-response.json'
+import response from './tempResponse/response.json'
+import './App.css'
+import {RenderMovies} from './components/Movies'
 function App() {
   const movies = response.Search
-  const badResponseData = badResponse.Response
-  const hasMovies = (movies.length>0)//movies.lenght > 0 == true
-  console.log(hasMovies)
   return (
     <div className='page'>
       <header>
@@ -17,23 +15,7 @@ function App() {
           </form>
       </header>
       <main>
-        <h3>Resultados de la busqueda</h3>
-        {hasMovies ?(
-          <ul>
-          {
-            movies.map(movie =>(
-              <li key={movie.imdbID}>
-                <h3>{movie.Title}</h3>
-                <p>{movie.Year}</p>
-                <img src={movie.Poster} alt={movie.Title} />
-              </li>
-            ))
-          }
-          </ul>):
-          (
-          <h2>No hay resultados para esta busqueda</h2> 
-          )
-        }
+        <RenderMovies movies={movies} />
       </main>
     </div>
   )
