@@ -18,23 +18,21 @@ function App() {
       </header>
       <main>
         <h3>Resultados de la busqueda</h3>
-        <ul>
-          <li>Something to show</li>
-          <li>Something to show</li>
-          <li>Something to show</li>
-        </ul>
-        {
-         <ul>
-            {
-              movies.map(movie =>(
-                <li key={movie.imdbID}>
-                  <h3>{movie.Title}</h3>
-                  <p>{movie.Year}</p>
-                  <img src={movie.Poster} alt={movie.Title} />
-                </li>
-              ))
-            }
-         </ul>
+        {hasMovies ?(
+          <ul>
+          {
+            movies.map(movie =>(
+              <li key={movie.imdbID}>
+                <h3>{movie.Title}</h3>
+                <p>{movie.Year}</p>
+                <img src={movie.Poster} alt={movie.Title} />
+              </li>
+            ))
+          }
+          </ul>):
+          (
+          <h2>No hay resultados para esta busqueda</h2> 
+          )
         }
       </main>
     </div>
